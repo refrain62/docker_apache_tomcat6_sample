@@ -1,0 +1,18 @@
+# For Apache+Tomcat6 Web Container
+version: '3'
+services:
+  httpd:
+    container_name: web-container
+    build:
+      context: ./web
+    volumes:
+        - './webapps:/usr/local/tomcat/webapps'
+        - './vhosts:/var/www/vhosts'
+        - './file:/file'
+        
+    ports:
+      - "80:80"
+      - "8080:8080"
+      
+    privileged: true
+    
